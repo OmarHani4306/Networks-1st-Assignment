@@ -1,0 +1,6 @@
+client_get /example_file.txt localhost 8080
+client_get /example_file.html localhost 8080
+client_get /example_file.jpg localhost 8080
+client_post upload_file.html localhost 8080
+client_post upload_file.txt localhost 8080
+client_post upload_file.jpg localhost 8080
