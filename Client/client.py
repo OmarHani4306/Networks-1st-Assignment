@@ -4,7 +4,7 @@ import sys
 import time
 
 # Default port for server connection
-DEFAULT_PORT = 8080
+DEFAULT_PORT = 80
 
 def client_get(client_socket, file_path, host_name):
     """
