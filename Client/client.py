@@ -1,3 +1,4 @@
+
 import socket
 import os
 import sys
@@ -126,14 +127,13 @@ def main():
                     continue
 
                 # Extract command, file path, hostname, and port from the line
-                command, file_path, host_name, port = parts[:4]
-                port = int(port)
+                command, file_path, _, _ = parts[:4]
 
                 # Execute the appropriate command
                 if command == "client_get":
-                    client_get(client_socket, file_path, host_name)
+                    client_get(client_socket, file_path, server_ip)
                 elif command == "client_post":
-                    client_post(client_socket, file_path, host_name)
+                    client_post(client_socket, file_path, server_ip)
                 else:
                     print("Error: Unknown command.")
 
@@ -141,7 +141,7 @@ def main():
                 time.sleep(0.5)
 
             # Send final close connection request
-            request = f"GET '' HTTP/1.1\r\nHost: {host_name}\r\nConnection: close\r\n\r\n"
+            request = f"GET '' HTTP/1.1\r\nHost: {server_ip}\r\nConnection: close\r\n\r\n"
             client_socket.send(request.encode())
         
     except Exception as e:
